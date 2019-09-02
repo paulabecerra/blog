@@ -22,12 +22,12 @@ class Comment(models.Model):
     post = models.ForeignKey('blogpost.Post', on_delete=models.CASCADE)
     author = models.CharField(max_length=200)
     text = models.TextField()
+    approved = models.BooleanField(default=False)
     created_date = models.DateTimeField(blank=True, null=True)
     published_date = models.DateTimeField(blank=True, null=True)
-    approve = models.BooleanField(default=False)
-
-    def approve(self):
-        self.approve = True
+    
+    def approved(self):
+        self.approved = True
         self.save()
 
     def __str__(self):

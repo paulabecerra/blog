@@ -15,8 +15,8 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    comments = Comment.objects.filter(post=post, approve=True)
-    return render(request, 'blogpost/post_detail.html', {'post':post, 'comments':comment})
+    comments = Comment.objects.filter(post=post)
+    return render(request, 'blogpost/post_detail.html', {'post':post, 'comments':comments})
 
 
 def post_new(request):
@@ -59,15 +59,3 @@ def add_comment_to_post(request, pk):
     else:
         form = CommentForm()
     return render(request, 'blogpost/add_comment_to_post.html', {'form': form})
-
-@login_required
-def comment_approve(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-    comment.approve()
-    return redirect('post_detail', pk=comment.post.pk)
-
-@login_required
-def comment_remove(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-    comment.delete()
-    return redirect('post_detail', pk=comment.post.pk)
