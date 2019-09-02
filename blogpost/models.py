@@ -16,3 +16,18 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    post = models.ForeignKey('blogpost.Post', on_delete=models.CASCADE)
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(blank=True, null=True)
+    published_date = models.DateTimeField(blank=True, null=True)
+
+    def approve(self):
+        self.approved_cooment = True
+        self.save()
+
+    def __str__(self):
+        return self.text
