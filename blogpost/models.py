@@ -24,13 +24,11 @@ class Comment(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(blank=True, null=True)
     published_date = models.DateTimeField(blank=True, null=True)
+    approve = models.BooleanField(default=False)
 
     def approve(self):
-        self.approved_cooment = True
+        self.approve = True
         self.save()
 
     def __str__(self):
         return self.text
-
-    def approved_comments(self):
-        return self.comments.filter(approved_comment=True)
