@@ -1,0 +1,8 @@
+{% extends "blogpost/base.html" %}
+
+{% block content %}
+<a href="{% url 'post_list' %}"><h1>blog</h1></a>
+<a href="#"><h1>work</h1></a>
+<a href="#"><h1>research</h1></a>
+<a href="{% url 'home' %}"><h1>gallery</h1></a>
+{% endblock %}
