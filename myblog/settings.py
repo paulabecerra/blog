@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
 #Local apps#
     'blogpost',
-    'home'
+    'home',
+    'work'
 ]
 
 MIDDLEWARE = [
