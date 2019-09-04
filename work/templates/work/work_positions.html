@@ -3,7 +3,7 @@
 {% block content%}
     {% for work in works %}
         <div class="post">
-            <h1><a href="{% url 'work_list' %}">{{ work.position }}</a></h1>
+            <h1><a href="{% url 'work_detail' pk=work.pk %}">{{ work.position }}</a></h1>
             <h2>{{ work.start_date }}</h2>
             <p>{{ work.description|linebreaksbr }}</p>
         </div>
