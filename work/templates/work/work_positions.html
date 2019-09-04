@@ -1,11 +1,15 @@
 {% extends "blogpost/base.html" %}
 
 {% block content%}
+    <div class="row">
     {% for work in works %}
-        <div class="post">
-            <h1><a href="{% url 'work_detail' pk=work.pk %}">{{ work.position }}</a></h1>
-            <h2>{{ work.start_date }}</h2>
-            <p>{{ work.description|linebreaksbr }}</p>
+        <div class="col-sm-4">
+            <div class="post">
+                <a href="{% url 'work_detail' pk=work.pk %}"><img src="{{ work.photo.url }}" alt="" width="150px"></a>
+                <h1><a href="{% url 'work_detail' pk=work.pk %}">{{ work.position }}</a></h1>
+                <h2>{{ work.start_date.date }}</h2>
+            </div>
         </div>
     {% endfor %}
+    </div>
 {% endblock%}
